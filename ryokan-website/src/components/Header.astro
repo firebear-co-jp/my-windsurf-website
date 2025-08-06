@@ -1,0 +1,99 @@
+---
+const navItems = [
+  { name: 'お部屋', url: '/rooms/' },
+  { name: '温泉', url: '/onsen/' },
+  { name: 'お料理', url: '/cuisine/' },
+  { name: '貴館の物語', url: '/story/' },
+  { name: '周辺観光', url: '/tour/' },
+  { name: 'お知らせ', url: '/news/' },
+  { name: 'アクセス', url: '/access/' },
+];
+
+const currentPath = Astro.url.pathname;
+---
+
+<header class="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-sm shadow-sm">
+  <div class="container">
+    <div class="flex items-center justify-between h-20">
+      <!-- Logo -->
+      <a href="/" class="text-2xl font-serif tracking-widest text-primary">
+        老舗旅館
+      </a>
+      
+      <!-- Desktop Navigation -->
+      <nav class="hidden md:block">
+        <ul class="flex space-x-8">
+          {navItems.map(item => (
+            <li>
+              <a 
+                href={item.url} 
+                class={`py-2 text-sm font-medium tracking-wider transition-colors duration-300 hover:text-primary ${
+                  currentPath.startsWith(item.url) ? 'text-primary border-b-2 border-primary' : 'text-dark/80'
+                }`}
+              >
+                {item.name}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </nav>
+      
+      <!-- Mobile menu button -->
+      <button id="mobile-menu-button" class="p-2 text-dark md:hidden" aria-label="メニューを開く">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+      
+      <!-- Booking Button -->
+      <div class="hidden ml-8 md:block">
+        <a href="/booking/" class="btn btn-primary">
+          ご予約はこちら
+        </a>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" class="hidden bg-white shadow-lg md:hidden">
+    <div class="px-2 pt-2 pb-3 space-y-1">
+      {navItems.map(item => (
+        <a 
+          href={item.url} 
+          class={`block px-3 py-2 text-base font-medium ${
+            currentPath.startsWith(item.url) ? 'bg-primary/10 text-primary' : 'text-dark hover:bg-gray-50'
+          }`}
+        >
+          {item.name}
+        </a>
+      ))}
+      <div class="px-3 py-2">
+        <a href="/booking/" class="block w-full px-4 py-2 text-center text-white bg-primary hover:bg-primary/90">
+          ご予約はこちら
+        </a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<script>
+  // Mobile menu toggle
+  const mobileMenuButton = document.getElementById('mobile-menu-button');
+  const mobileMenu = document.getElementById('mobile-menu');
+  
+  if (mobileMenuButton && mobileMenu) {
+    mobileMenuButton.addEventListener('click', () => {
+      const isExpanded = mobileMenuButton.getAttribute('aria-expanded') === 'true';
+      mobileMenuButton.setAttribute('aria-expanded', !isExpanded);
+      mobileMenu.classList.toggle('hidden');
+    });
+    
+    // Close menu when clicking outside
+    document.addEventListener('click', (e) => {
+      if (!mobileMenuButton.contains(e.target) && !mobileMenu.contains(e.target)) {
+        mobileMenuButton.setAttribute('aria-expanded', 'false');
+        mobileMenu.classList.add('hidden');
+      }
+    });
+  }
+</script>

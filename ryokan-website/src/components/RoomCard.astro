@@ -1,0 +1,49 @@
+---
+interface Props {
+  name: string;
+  description: string;
+  price: string;
+  image: string;
+  url: string;
+}
+
+const { name, description, price, image, url } = Astro.props;
+---
+
+<article class="overflow-hidden transition-all duration-300 bg-white rounded-lg shadow-md hover:shadow-xl">
+  <div class="relative h-64 overflow-hidden">
+    <img 
+      src={image} 
+      alt={name}
+      class="object-cover w-full h-full transition-transform duration-500 hover:scale-105"
+      width="400"
+      height="300"
+      loading="lazy"
+    />
+    <div class="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/80 to-transparent">
+      <p class="text-lg font-semibold text-white">{price}</p>
+    </div>
+  </div>
+  
+  <div class="p-6">
+    <h3 class="mb-2 text-xl font-semibold text-gray-900">{name}</h3>
+    <p class="mb-4 text-gray-600 line-clamp-3">
+      {description}
+    </p>
+    <a 
+      href={url} 
+      class="inline-flex items-center text-sm font-medium text-primary hover:text-primary/80 group"
+    >
+      詳しく見る
+      <svg 
+        class="w-4 h-4 ml-1 transition-transform duration-200 group-hover:translate-x-1" 
+        fill="none" 
+        stroke="currentColor" 
+        viewBox="0 0 24 24" 
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+      </svg>
+    </a>
+  </div>
+</article>

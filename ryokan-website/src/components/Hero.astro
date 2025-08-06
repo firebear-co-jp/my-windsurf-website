@@ -1,0 +1,65 @@
+---
+interface Props {
+  title: string;
+  subtitle: string;
+  image: string;
+  ctaText: string;
+  ctaLink: string;
+}
+
+const { title, subtitle, image, ctaText, ctaLink } = Astro.props;
+---
+
+<div class="relative pt-32 pb-20 overflow-hidden bg-gray-900 md:pt-40 md:pb-28">
+  <!-- Background Image -->
+  <div class="absolute inset-0">
+    <img 
+      src={image} 
+      alt="" 
+      class="object-cover w-full h-full"
+      width="1920"
+      height="1080"
+      loading="eager"
+    />
+    <div class="absolute inset-0 bg-gradient-to-r from-gray-900/70 to-gray-900/40"></div>
+  </div>
+  
+  <!-- Content -->
+  <div class="relative z-10 px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
+    <div class="max-w-3xl mx-auto text-center">
+      <h1 class="text-4xl font-bold tracking-tight text-white sm:text-5xl md:text-6xl">
+        {title}
+      </h1>
+      <p class="max-w-2xl mx-auto mt-6 text-xl font-light text-gray-200 md:mt-8">
+        {subtitle}
+      </p>
+      <div class="flex flex-col justify-center mt-10 space-y-4 sm:flex-row sm:space-y-0 sm:space-x-4">
+        <a 
+          href={ctaLink}
+          class="inline-flex items-center justify-center px-8 py-4 text-base font-medium text-white transition-colors duration-300 bg-primary hover:bg-primary/90 hover:shadow-lg md:py-5 md:px-10 md:text-lg"
+        >
+          {ctaText}
+        </a>
+        <a 
+          href="/rooms/"
+          class="inline-flex items-center justify-center px-8 py-4 text-base font-medium text-white transition-colors duration-300 border-2 border-white hover:bg-white/10 md:py-5 md:px-10 md:text-lg"
+        >
+          お部屋を見る
+        </a>
+      </div>
+    </div>
+    
+    <!-- Scroll Indicator -->
+    <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2">
+      <a 
+        href="#about" 
+        class="inline-flex items-center justify-center w-10 h-10 text-white transition-colors duration-300 rounded-full hover:bg-white/10"
+        aria-label="スクロール"
+      >
+        <svg class="w-6 h-6 animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+        </svg>
+      </a>
+    </div>
+  </div>
+</div>

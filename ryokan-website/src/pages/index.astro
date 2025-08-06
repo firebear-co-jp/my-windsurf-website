@@ -1,0 +1,268 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero.astro';
+import Section from '../components/Section.astro';
+import RoomCard from '../components/RoomCard.astro';
+import Button from '../components/Button.astro';
+
+// Sample data - in a real app, this would come from a CMS or API
+const featuredRooms = [
+  {
+    id: 1,
+    name: '特別室「月見」',
+    description: '広々とした和室からは庭園と池を一望でき、四季折々の風景をお楽しみいただけます。',
+    price: '50,000円〜 / 1泊2名様',
+    image: '/images/rooms/tsukimi.jpg',
+    url: '/rooms/tsukimi/'
+  },
+  {
+    id: 2,
+    name: '上等和室「花鳥風月」',
+    description: '京都の伝統的な意匠を施した落ち着きのある和室。檜の露天風呂付き。',
+    price: '45,000円〜 / 1泊2名様',
+    image: '/images/rooms/kachoufugetsu.jpg',
+    url: '/rooms/kachoufugetsu/'
+  },
+  {
+    id: 3,
+    name: '特別室「山吹」',
+    description: 'くつろぎの空間でゆったりとお過ごしいただける和室。山吹色のアクセントが美しい特別室です。',
+    price: '48,000円〜 / 1泊2名様',
+    image: '/images/rooms/yamabuki.jpg',
+    url: '/rooms/yamabuki/'
+  }
+];
+---
+
+<Layout title="ホーム">
+  <!-- Hero Section -->
+  <Hero 
+    title="時間と語らう、美しき隠れ家"
+    subtitle="伝統と洗練が調和する、老舗旅館での特別なひとときを"
+    image="/images/hero.jpg"
+    ctaText="ご予約はこちら"
+    ctaLink="/booking/"
+  />
+  
+  <!-- About Section -->
+  <Section>
+    <div class="container mx-auto">
+      <div class="flex flex-col items-center justify-between gap-12 lg:flex-row">
+        <div class="lg:w-1/2">
+          <h2 class="section-title">老舗旅館について</h2>
+          <p class="mb-6 text-lg leading-relaxed">
+            創業より100年以上、変わらぬおもてなしの心で皆様をお迎えしております。
+            京都市中にありながら、静寂に包まれた特別な空間で、ゆったりとした時間をお過ごしください。
+          </p>
+          <p class="mb-8 text-lg leading-relaxed">
+            四季折々の自然と調和した庭園、地元の食材を活かした会席料理、そして心のこもったおもてなし。
+            古き良き日本の伝統を感じながら、特別なひとときをお過ごしいただけます。
+          </p>
+          <Button href="/story/" variant="outline">
+            旅館の歴史を見る
+          </Button>
+        </div>
+        <div class="lg:w-5/12">
+          <div class="relative">
+            <img 
+              src="/images/about.jpg" 
+              alt="旅館の外観" 
+              class="w-full rounded-lg shadow-lg"
+              width="600"
+              height="400"
+              loading="lazy"
+            />
+            <div class="absolute hidden w-64 h-64 -bottom-8 -right-8 md:block">
+              <img 
+                src="/images/onsen/outdoor.jpg" 
+                alt="庭園の風景" 
+                class="object-cover w-full h-full border-4 border-white rounded-lg shadow-lg"
+                width="400"
+                height="400"
+                loading="lazy"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </Section>
+  
+  <!-- Featured Rooms -->
+  <Section class="bg-gray-50">
+    <div class="container mx-auto">
+      <h2 class="section-title">おすすめのお部屋</h2>
+      <p class="max-w-3xl mx-auto mb-12 text-center text-gray-600">
+        季節の移ろいを感じる特別なお部屋をご用意しております。
+        くつろぎの空間で、心ゆくまでごゆっくりとお過ごしください。
+      </p>
+      
+      <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+        {featuredRooms.map(room => (
+          <RoomCard 
+            name={room.name}
+            description={room.description}
+            price={room.price}
+            image={room.image}
+            url={room.url}
+          />
+        ))}
+      </div>
+      
+      <div class="mt-12 text-center">
+        <Button href="/rooms/" variant="primary">
+          すべてのお部屋を見る
+        </Button>
+      </div>
+    </div>
+  </Section>
+  
+  <!-- Onsen Section -->
+  <Section>
+    <div class="container mx-auto">
+      <div class="flex flex-col items-center justify-between gap-12 lg:flex-row-reverse">
+        <div class="w-full lg:w-1/2">
+          <div class="overflow-hidden rounded-lg shadow-xl">
+            <img 
+              src="/images/onsen/outdoor.jpg" 
+              alt="当館の露天風呂" 
+              class="object-cover w-full h-auto"
+              width="800"
+              height="600"
+              loading="lazy"
+            />
+          </div>
+        </div>
+        <div class="w-full lg:w-1/2">
+          <h2 class="section-title">温泉</h2>
+          <p class="mb-6 text-lg leading-relaxed">
+            当館自慢の天然温泉は、美肌効果の高いアルカリ性単純泉です。
+            広々とした大浴場と、貸切風呂（有料）をご用意しております。
+          </p>
+          <ul class="mb-8 space-y-2">
+            <li class="flex items-start">
+              <svg class="w-5 h-5 mt-1 mr-2 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+              </svg>
+              <span>美肌効果の高いアルカリ性単純泉</span>
+            </li>
+            <li class="flex items-start">
+              <svg class="w-5 h-5 mt-1 mr-2 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+              </svg>
+              <span>広々とした大浴場（男女別）</span>
+            </li>
+            <li class="flex items-start">
+              <svg class="w-5 h-5 mt-1 mr-2 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+              </svg>
+              <span>貸切風呂（有料・要予約）</span>
+            </li>
+            <li class="flex items-start">
+              <svg class="w-5 h-5 mt-1 mr-2 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+              </svg>
+              <span>季節のアメニティ完備</span>
+            </li>
+          </ul>
+          <Button href="/onsen/" variant="outline">
+            温泉の詳細を見る
+          </Button>
+        </div>
+      </div>
+    </div>
+  </Section>
+  
+  <!-- Cuisine Section -->
+  <Section class="bg-gray-50">
+    <div class="container mx-auto">
+      <div class="text-center">
+        <h2 class="section-title">お料理</h2>
+        <p class="max-w-3xl mx-auto mb-12 text-lg text-gray-600">
+          地元の旬の食材を活かした会席料理で、京都の味をお楽しみください。
+          朝食は季節の食材をふんだんに使った朝粥膳が人気です。
+        </p>
+      </div>
+      
+      <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+        <div class="overflow-hidden bg-white rounded-lg shadow-md">
+          <img 
+            src="/images/cuisine/kaiseki.jpg" 
+            alt="会席料理" 
+            class="w-full h-64 object-cover"
+            width="400"
+            height="300"
+          />
+          <div class="p-6">
+            <h3 class="mb-2 text-xl font-semibold">季節の会席料理</h3>
+            <p class="mb-4 text-gray-600">
+              旬の食材を活かした、目でも楽しめる会席料理です。
+              前菜からデザートまで、季節の移ろいを感じる一皿をお楽しみください。
+            </p>
+          </div>
+        </div>
+        
+        <div class="overflow-hidden bg-white rounded-lg shadow-md">
+          <img 
+            src="/images/cuisine/breakfast.jpg" 
+            alt="朝食" 
+            class="w-full h-64 object-cover"
+            width="400"
+            height="300"
+          />
+          <div class="p-6">
+            <h3 class="mb-2 text-xl font-semibold">朝粥膳</h3>
+            <p class="mb-4 text-gray-600">
+              地元の野菜や乾物をふんだんに使った、体に優しい朝食です。
+              京都の伝統的な朝食を、ゆっくりとお楽しみください。
+            </p>
+          </div>
+        </div>
+        
+        <div class="overflow-hidden bg-white rounded-lg shadow-md">
+          <img 
+            src="/images/cuisine/sweets.jpg" 
+            alt="和菓子" 
+            class="w-full h-64 object-cover"
+            width="400"
+            height="300"
+          />
+          <div class="p-6">
+            <h3 class="mb-2 text-xl font-semibold">お茶と和菓子</h3>
+            <p class="mb-4 text-gray-600">
+              チェックイン後には、お部屋で一服。
+              季節の和菓子とお抹茶で、旅の疲れを癒してください。
+            </p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="mt-12 text-center">
+        <Button href="/cuisine/" variant="primary">
+          お料理の詳細を見る
+        </Button>
+      </div>
+    </div>
+  </Section>
+  
+  <!-- CTA Section -->
+  <Section class="bg-primary text-white">
+    <div class="container mx-auto text-center">
+      <h2 class="mb-6 text-3xl font-semibold md:text-4xl">
+        特別なひとときを、老舗旅館で
+      </h2>
+      <p class="max-w-3xl mx-auto mb-8 text-lg opacity-90">
+        ご予約は24時間受け付けております。
+        特別な記念日やご家族でのご旅行に、心を込めておもてなしいたします。
+      </p>
+      <div class="flex flex-wrap justify-center gap-4">
+        <Button href="/booking/" variant="white">
+          今すぐ予約する
+        </Button>
+        <Button href="/contact/" variant="outline-white">
+          お問い合わせ
+        </Button>
+      </div>
+    </div>
+  </Section>
+</Layout>
