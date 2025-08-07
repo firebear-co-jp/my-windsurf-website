@@ -2,14 +2,30 @@
 interface Props {
   id?: string;
   class?: string;
+  noPadding?: boolean;
 }
 
-const { id, class: className = '' } = Astro.props;
+const { id, class: className = '', noPadding = false } = Astro.props;
 ---
 
 <section 
   {id}
-  class={`py-16 md:py-24 ${className}`}
+  class:list={[
+    'relative w-full',
+    !noPadding && 'py-16 md:py-24',
+    className
+  ]}
+  style="
+    border: none !important;
+    box-shadow: none !important;
+    outline: none !important;
+    position: relative;
+    z-index: 2;
+  "
 >
-  <slot />
+  <div class="w-full">
+    <div class="container mx-auto px-4">
+      <slot />
+    </div>
+  </div>
 </section>

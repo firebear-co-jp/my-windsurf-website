@@ -45,57 +45,59 @@ const featuredRooms = [
   />
   
   <!-- About Section -->
-  <Section>
+  <Section id="about" class="bg-white">
     <div class="container mx-auto">
-      <div class="flex flex-col items-center justify-between gap-12 lg:flex-row">
+      <div class="text-center">
+        <h2 class="section-title">老舗旅館について</h2>
+        <p class="max-w-3xl mx-auto text-lg text-gray-600 mb-12">
+          創業より100年以上、変わらぬおもてなしの心で皆様をお迎えしております。
+        </p>
+      </div>
+      <div class="flex flex-col lg:flex-row items-center gap-12 mb-12">
+        <!-- テキスト部分 -->
         <div class="lg:w-1/2">
-          <h2 class="section-title">老舗旅館について</h2>
-          <p class="mb-6 text-lg leading-relaxed">
-            創業より100年以上、変わらぬおもてなしの心で皆様をお迎えしております。
+          <p class="mb-6 text-lg leading-relaxed text-gray-700">
+            創業より100年以上、変わらぬおもてなしの心で皆様をお迎えしております。<br>
             京都市中にありながら、静寂に包まれた特別な空間で、ゆったりとした時間をお過ごしください。
           </p>
-          <p class="mb-8 text-lg leading-relaxed">
+          <p class="text-lg leading-relaxed text-gray-700">
             四季折々の自然と調和した庭園、地元の食材を活かした会席料理、そして心のこもったおもてなし。
             古き良き日本の伝統を感じながら、特別なひとときをお過ごしいただけます。
           </p>
-          <Button href="/story/" variant="outline">
-            旅館の歴史を見る
-          </Button>
         </div>
-        <div class="lg:w-5/12">
-          <div class="relative">
+        
+        <!-- 画像部分 -->
+        <div class="lg:w-1/2 w-full">
+          <div class="overflow-hidden rounded-lg shadow-xl">
             <img 
               src="/images/about.jpg" 
               alt="旅館の外観" 
-              class="w-full rounded-lg shadow-lg"
+              class="w-full h-auto object-cover"
               width="600"
               height="400"
               loading="lazy"
             />
-            <div class="absolute hidden w-64 h-64 -bottom-8 -right-8 md:block">
-              <img 
-                src="/images/onsen/outdoor.jpg" 
-                alt="庭園の風景" 
-                class="object-cover w-full h-full border-4 border-white rounded-lg shadow-lg"
-                width="400"
-                height="400"
-                loading="lazy"
-              />
-            </div>
           </div>
         </div>
+      </div>
+      <!-- ボタン部分 -->
+      <div class="text-center mt-8">
+        <a href="/story/" class="inline-block px-8 py-3 text-lg font-medium text-white bg-primary hover:bg-primary/90 transition-colors duration-300 rounded-md">
+          旅館の歴史を見る
+        </a>
       </div>
     </div>
   </Section>
   
   <!-- Featured Rooms -->
-  <Section class="bg-gray-50">
+  <Section id="rooms" class="bg-gray-50">
     <div class="container mx-auto">
-      <h2 class="section-title">おすすめのお部屋</h2>
-      <p class="max-w-3xl mx-auto mb-12 text-center text-gray-600">
-        季節の移ろいを感じる特別なお部屋をご用意しております。
-        くつろぎの空間で、心ゆくまでごゆっくりとお過ごしください。
-      </p>
+      <div class="text-center">
+        <h2 class="section-title">おすすめのお部屋</h2>
+        <p class="max-w-3xl mx-auto mb-12 text-lg text-gray-600">
+          季節の移ろいを感じる特別なお部屋をご用意しております。<br>
+          くつろぎの空間で、心ゆくまでごゆっくりとお過ごしください。
+        </p>
       
       <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
         {featuredRooms.map(room => (
@@ -109,7 +111,7 @@ const featuredRooms = [
         ))}
       </div>
       
-      <div class="mt-12 text-center">
+      <div class="mt-16 mb-12 text-center">
         <Button href="/rooms/" variant="primary">
           すべてのお部屋を見る
         </Button>
@@ -118,8 +120,15 @@ const featuredRooms = [
   </Section>
   
   <!-- Onsen Section -->
-  <Section>
+  <Section id="onsen" class="bg-blue-50">
     <div class="container mx-auto">
+      <div class="text-center mb-12">
+        <h2 class="section-title">温泉</h2>
+        <p class="max-w-3xl mx-auto text-lg text-gray-600">
+          当館自慢の天然温泉は、美肌効果の高いアルカリ性単純泉です。<br>
+          広々とした大浴場と、季節の移ろいを感じる露天風呂で、心も体もリフレッシュできます。
+        </p>
+      </div>
       <div class="flex flex-col items-center justify-between gap-12 lg:flex-row-reverse">
         <div class="w-full lg:w-1/2">
           <div class="overflow-hidden rounded-lg shadow-xl">
@@ -134,7 +143,6 @@ const featuredRooms = [
           </div>
         </div>
         <div class="w-full lg:w-1/2">
-          <h2 class="section-title">温泉</h2>
           <p class="mb-6 text-lg leading-relaxed">
             当館自慢の天然温泉は、美肌効果の高いアルカリ性単純泉です。
             広々とした大浴場と、貸切風呂（有料）をご用意しております。
@@ -165,21 +173,24 @@ const featuredRooms = [
               <span>季節のアメニティ完備</span>
             </li>
           </ul>
-          <Button href="/onsen/" variant="outline">
-            温泉の詳細を見る
-          </Button>
+        </div>
+      </div>
+      <div class="mt-16 mb-8 text-center">
+        <Button href="/onsen/" variant="primary">
+          温泉の詳細を見る
+        </Button>
         </div>
       </div>
     </div>
   </Section>
   
   <!-- Cuisine Section -->
-  <Section class="bg-gray-50">
+  <Section id="cuisine" class="bg-amber-50">
     <div class="container mx-auto">
       <div class="text-center">
         <h2 class="section-title">お料理</h2>
         <p class="max-w-3xl mx-auto mb-12 text-lg text-gray-600">
-          地元の旬の食材を活かした会席料理で、京都の味をお楽しみください。
+          地元の旬の食材を活かした会席料理で、京都の味をお楽しみください。<br>
           朝食は季節の食材をふんだんに使った朝粥膳が人気です。
         </p>
       </div>
@@ -237,7 +248,7 @@ const featuredRooms = [
         </div>
       </div>
       
-      <div class="mt-12 text-center">
+      <div class="mt-16 mb-8 text-center">
         <Button href="/cuisine/" variant="primary">
           お料理の詳細を見る
         </Button>
@@ -246,13 +257,14 @@ const featuredRooms = [
   </Section>
   
   <!-- CTA Section -->
-  <Section class="bg-primary text-white">
+  <Section id="contact" class="bg-primary text-white pb-0">
+    <div class="absolute bottom-0 left-0 right-0 h-8 bg-dark"></div>
     <div class="container mx-auto text-center">
       <h2 class="mb-6 text-3xl font-semibold md:text-4xl">
         特別なひとときを、老舗旅館で
       </h2>
       <p class="max-w-3xl mx-auto mb-8 text-lg opacity-90">
-        ご予約は24時間受け付けております。
+        ご予約は24時間受け付けております。<br>
         特別な記念日やご家族でのご旅行に、心を込めておもてなしいたします。
       </p>
       <div class="flex flex-wrap justify-center gap-4">

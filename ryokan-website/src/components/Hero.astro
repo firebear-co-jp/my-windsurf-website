@@ -10,13 +10,13 @@ interface Props {
 const { title, subtitle, image, ctaText, ctaLink } = Astro.props;
 ---
 
-<div class="relative pt-32 pb-20 overflow-hidden bg-gray-900 md:pt-40 md:pb-28">
+<div class="relative h-[70vh] min-h-[500px] flex items-center justify-center bg-gray-900 overflow-hidden">
   <!-- Background Image -->
   <div class="absolute inset-0">
     <img 
       src={image} 
       alt="" 
-      class="object-cover w-full h-full"
+      class="w-full h-full object-cover"
       width="1920"
       height="1080"
       loading="eager"
@@ -25,41 +25,28 @@ const { title, subtitle, image, ctaText, ctaLink } = Astro.props;
   </div>
   
   <!-- Content -->
-  <div class="relative z-10 px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
-    <div class="max-w-3xl mx-auto text-center">
-      <h1 class="text-4xl font-bold tracking-tight text-white sm:text-5xl md:text-6xl">
+  <div class="relative z-10 w-full px-4 mx-auto text-center">
+    <div class="max-w-4xl mx-auto">
+      <h1 class="text-4xl font-bold text-white whitespace-nowrap sm:text-5xl md:text-6xl lg:text-7xl mb-6">
         {title}
       </h1>
-      <p class="max-w-2xl mx-auto mt-6 text-xl font-light text-gray-200 md:mt-8">
+      <p class="max-w-3xl mx-auto text-xl text-gray-200 mb-10 md:text-2xl">
         {subtitle}
       </p>
-      <div class="flex flex-col justify-center mt-10 space-y-4 sm:flex-row sm:space-y-0 sm:space-x-4">
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mt-8 w-full max-w-md mx-auto">
         <a 
           href={ctaLink}
-          class="inline-flex items-center justify-center px-8 py-4 text-base font-medium text-white transition-colors duration-300 bg-primary hover:bg-primary/90 hover:shadow-lg md:py-5 md:px-10 md:text-lg"
+          class="inline-flex items-center justify-center w-full px-6 py-3 text-base font-medium text-white hover:text-white bg-primary hover:bg-primary/90 transition-all duration-300 rounded-md hover:shadow-lg hover:-translate-y-1"
         >
           {ctaText}
         </a>
         <a 
           href="/rooms/"
-          class="inline-flex items-center justify-center px-8 py-4 text-base font-medium text-white transition-colors duration-300 border-2 border-white hover:bg-white/10 md:py-5 md:px-10 md:text-lg"
+          class="inline-flex items-center justify-center w-full px-6 py-3 text-base font-medium text-gray-900 bg-white hover:bg-gray-100 hover:text-gray-900 transition-all duration-300 rounded-md hover:shadow-lg hover:-translate-y-1"
         >
           お部屋を見る
         </a>
       </div>
-    </div>
-    
-    <!-- Scroll Indicator -->
-    <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2">
-      <a 
-        href="#about" 
-        class="inline-flex items-center justify-center w-10 h-10 text-white transition-colors duration-300 rounded-full hover:bg-white/10"
-        aria-label="スクロール"
-      >
-        <svg class="w-6 h-6 animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
-        </svg>
-      </a>
     </div>
   </div>
 </div>
