@@ -30,20 +30,35 @@ const { name, description, price, image, url } = Astro.props;
     <p class="mb-4 text-gray-600 line-clamp-3">
       {description}
     </p>
-    <a 
-      href={url} 
-      class="inline-flex items-center text-sm font-medium text-primary hover:text-primary/80 group"
-    >
-      詳しく見る
-      <svg 
-        class="w-4 h-4 ml-1 transition-transform duration-200 group-hover:translate-x-1" 
-        fill="none" 
-        stroke="currentColor" 
-        viewBox="0 0 24 24" 
-        xmlns="http://www.w3.org/2000/svg"
+    {url ? (
+      <a 
+        href={url} 
+        class="inline-flex items-center text-sm font-medium text-primary hover:text-primary/80 group"
       >
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-      </svg>
-    </a>
+        詳しく見る
+        <svg 
+          class="w-4 h-4 ml-1 transition-transform duration-200 group-hover:translate-x-1" 
+          fill="none" 
+          stroke="currentColor" 
+          viewBox="0 0 24 24" 
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+        </svg>
+      </a>
+    ) : (
+      <span class="inline-flex items-center text-sm font-medium text-gray-400">
+        詳しく見る
+        <svg 
+          class="w-4 h-4 ml-1" 
+          fill="none" 
+          stroke="currentColor" 
+          viewBox="0 0 24 24" 
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+        </svg>
+      </span>
+    )}
   </div>
 </article>

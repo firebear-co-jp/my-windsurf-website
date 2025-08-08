@@ -45,11 +45,12 @@ const featuredRooms = [
   />
   
   <!-- About Section -->
-  <Section id="about" class="bg-white">
-    <div class="container mx-auto">
-      <div class="text-center">
+  <div class="relative w-full bg-white-50">
+    <Section id="about" class="relative">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-12">
         <h2 class="section-title">老舗旅館について</h2>
-        <p class="max-w-3xl mx-auto text-lg text-gray-600 mb-12">
+        <p class="max-w-3xl mx-auto text-lg text-gray-600">
           創業より100年以上、変わらぬおもてなしの心で皆様をお迎えしております。
         </p>
       </div>
@@ -91,44 +92,43 @@ const featuredRooms = [
   
   <!-- Featured Rooms -->
   <Section id="rooms" class="bg-gray-50">
-    <div class="container mx-auto">
-      <div class="text-center">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-12">
         <h2 class="section-title">おすすめのお部屋</h2>
-        <p class="max-w-3xl mx-auto mb-12 text-lg text-gray-600">
+        <p class="max-w-3xl mx-auto text-lg text-gray-600">
           季節の移ろいを感じる特別なお部屋をご用意しております。<br>
           くつろぎの空間で、心ゆくまでごゆっくりとお過ごしください。
         </p>
-      
-      <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-        {featuredRooms.map(room => (
-          <RoomCard 
-            name={room.name}
-            description={room.description}
-            price={room.price}
-            image={room.image}
-            url={room.url}
-          />
-        ))}
       </div>
-      
-      <div class="mt-16 mb-12 text-center">
-        <Button href="/rooms/" variant="primary">
-          すべてのお部屋を見る
-        </Button>
-      </div>
+    
+    <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+      {featuredRooms.map(room => (
+        <RoomCard 
+          name={room.name}
+          description={room.description}
+          price={room.price}
+          image={room.image}
+          url={room.url}
+        />
+      ))}
+    </div>
+    
+    <div class="mt-16 text-center">
+      <Button href="/rooms/" variant="primary">
+        すべてのお部屋を見る
+      </Button>
     </div>
   </Section>
   
   <!-- Onsen Section -->
   <Section id="onsen" class="bg-blue-50">
-    <div class="container mx-auto">
-      <div class="text-center mb-12">
-        <h2 class="section-title">温泉</h2>
-        <p class="max-w-3xl mx-auto text-lg text-gray-600">
-          当館自慢の天然温泉は、美肌効果の高いアルカリ性単純泉です。<br>
-          広々とした大浴場と、季節の移ろいを感じる露天風呂で、心も体もリフレッシュできます。
-        </p>
-      </div>
+    <div class="text-center mb-12">
+          <h2 class="section-title">温泉</h2>
+          <p class="max-w-3xl mx-auto text-lg text-gray-600">
+            当館自慢の天然温泉は、美肌効果の高いアルカリ性単純泉です。<br>
+            広々とした大浴場と、季節の移ろいを感じる露天風呂で、心も体もリフレッシュできます。
+          </p>
+        </div>
       <div class="flex flex-col items-center justify-between gap-12 lg:flex-row-reverse">
         <div class="w-full lg:w-1/2">
           <div class="overflow-hidden rounded-lg shadow-xl">
@@ -179,17 +179,14 @@ const featuredRooms = [
         <Button href="/onsen/" variant="primary">
           温泉の詳細を見る
         </Button>
-        </div>
-      </div>
     </div>
   </Section>
   
   <!-- Cuisine Section -->
   <Section id="cuisine" class="bg-amber-50">
-    <div class="container mx-auto">
-      <div class="text-center">
+    <div class="text-center mb-12">
         <h2 class="section-title">お料理</h2>
-        <p class="max-w-3xl mx-auto mb-12 text-lg text-gray-600">
+        <p class="max-w-3xl mx-auto text-lg text-gray-600">
           地元の旬の食材を活かした会席料理で、京都の味をお楽しみください。<br>
           朝食は季節の食材をふんだんに使った朝粥膳が人気です。
         </p>
@@ -251,28 +248,6 @@ const featuredRooms = [
       <div class="mt-16 mb-8 text-center">
         <Button href="/cuisine/" variant="primary">
           お料理の詳細を見る
-        </Button>
-      </div>
-    </div>
-  </Section>
-  
-  <!-- CTA Section -->
-  <Section id="contact" class="bg-primary text-white pb-0">
-    <div class="absolute bottom-0 left-0 right-0 h-8 bg-dark"></div>
-    <div class="container mx-auto text-center">
-      <h2 class="mb-6 text-3xl font-semibold md:text-4xl">
-        特別なひとときを、老舗旅館で
-      </h2>
-      <p class="max-w-3xl mx-auto mb-8 text-lg opacity-90">
-        ご予約は24時間受け付けております。<br>
-        特別な記念日やご家族でのご旅行に、心を込めておもてなしいたします。
-      </p>
-      <div class="flex flex-wrap justify-center gap-4">
-        <Button href="/booking/" variant="white">
-          今すぐ予約する
-        </Button>
-        <Button href="/contact/" variant="outline-white">
-          お問い合わせ
         </Button>
       </div>
     </div>

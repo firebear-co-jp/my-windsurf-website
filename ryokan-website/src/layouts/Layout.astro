@@ -66,11 +66,71 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
       }
     </script>
   </head>
+  <style>
+    /* Reset main element */
+    main {
+      border: none !important;
+      box-shadow: none !important;
+      margin: 0 !important;
+      padding: 0 !important;
+      position: relative;
+    }
+    
+    /* CTA section styling */
+    .cta-section {
+      position: relative;
+      z-index: 10;
+      border: none !important;
+      margin: 0 !important;
+      padding: 4rem 0;
+      background-color: #1a365d; /* primary color */
+    }
+    
+    /* Remove all borders and outlines */
+    * {
+      border-color: transparent !important;
+      outline: none !important;
+    }
+    
+    /* Remove any potential line from the bottom of the main content */
+    main > :last-child {
+      border-bottom: none !important;
+      box-shadow: none !important;
+    }
+  </style>
   <body class="min-h-screen flex flex-col">
     <Header />
     
-    <main class="flex-grow">
+    <main class="flex-grow relative">
       <slot />
+    </main>  
+      <!-- CTA Section - Moved inside main -->
+      <div class="bg-primary text-white pt-16 pb-24 relative mt-0">
+        <div class="absolute bottom-0 left-0 right-0 h-8 bg-dark"></div>
+        <div class="container mx-auto px-4 text-center">
+          <h2 class="mb-6 text-3xl font-semibold md:text-4xl">
+            特別なひとときを、老舗旅館で
+          </h2>
+          <p class="max-w-3xl mx-auto mb-10 text-lg opacity-90">
+            ご予約は24時間受け付けております。<br>
+            特別な記念日やご家族でのご旅行に、心を込めておもてなしいたします。
+          </p>
+          <div class="flex flex-col sm:flex-row justify-center gap-6 max-w-md mx-auto">
+            <a 
+              href="/booking/" 
+              class="flex-1 sm:flex-none px-8 py-3 text-base font-semibold text-gray-900 bg-white hover:bg-gray-100 rounded-md transition-colors duration-200 text-center"
+            >
+              今すぐ予約する
+            </a>
+            <a 
+              href="/contact/" 
+              class="flex-1 sm:flex-none px-8 py-3 text-base font-semibold text-gray-900 bg-white hover:bg-gray-100 rounded-md transition-colors duration-200 text-center"
+            >
+              お問い合わせ
+            </a>
+          </div>
+        </div>
+      </div>
     </main>
     
     <Footer />

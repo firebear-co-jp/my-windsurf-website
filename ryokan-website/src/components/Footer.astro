@@ -63,8 +63,8 @@ const footerNav = [
       
       <!-- Navigation Links -->
       <div class="md:col-span-2">
-        <div class="grid grid-cols-1 gap-8 sm:grid-cols-2">
-          {footerNav.slice(0, 2).map(section => (
+        <div class="grid grid-cols-1 gap-8 sm:grid-cols-3 mb-12">
+          {footerNav.map(section => (
             <div>
               <h3 class="mb-4 text-sm font-semibold tracking-wider text-primary uppercase">
                 {section.title}
@@ -83,24 +83,6 @@ const footerNav = [
               </ul>
             </div>
           ))}
-        </div>
-        
-        <div class="mt-8">
-          <h3 class="mb-4 text-sm font-semibold tracking-wider text-primary uppercase">
-            {footerNav[2].title}
-          </h3>
-          <ul class="space-y-2">
-            {footerNav[2].items.map(item => (
-              <li>
-                <a 
-                  href={item.url} 
-                  class="text-sm text-gray-300 transition-colors duration-300 hover:text-white hover:underline"
-                >
-                  {item.name}
-                </a>
-              </li>
-            ))}
-          </ul>
         </div>
       </div>
       

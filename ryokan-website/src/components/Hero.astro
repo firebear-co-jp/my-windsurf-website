@@ -10,13 +10,33 @@ interface Props {
 const { title, subtitle, image, ctaText, ctaLink } = Astro.props;
 ---
 
-<div class="relative h-[70vh] min-h-[500px] flex items-center justify-center bg-gray-900 overflow-hidden">
+<div class="relative h-[calc(100vh-5rem)] min-h-[500px] max-h-[800px] flex items-center justify-center bg-gray-900" style="margin: 0; padding: 0; line-height: 0; display: flex; flex-direction: column;">
+  <style>
+    .hero-image-container {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      margin: 0;
+      padding: 0;
+      line-height: 0;
+    }
+    .hero-image-container img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      margin: 0;
+      padding: 0;
+    }
+  </style>
   <!-- Background Image -->
-  <div class="absolute inset-0">
+  <div class="hero-image-container">
     <img 
       src={image} 
       alt="" 
-      class="w-full h-full object-cover"
       width="1920"
       height="1080"
       loading="eager"
